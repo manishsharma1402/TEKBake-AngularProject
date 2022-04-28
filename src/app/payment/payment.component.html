@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="" />
+    <meta
+      name="author"
+      content="Mark Otto, Jacob Thornton, and Bootstrap contributors"
+    />
+    <meta name="generator" content="Hugo 0.84.0" />
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+      .container {
+        max-width: 960px;
+      }
+    </style>
+  </head>
+  <body class="bg-light">
+    <div class="container">
+      <main>
+        <div class="py-5 text-center">
+          <h2>Payment</h2>
+        </div>
+
+        <div class="row g-5">
+          <div class="col-md-5 col-lg-4 order-md-last">
+            <h4 class="d-flex justify-content-between align-items-center mb-3">
+              <span class="text-primary">Your cart</span>
+            </h4>
+            <ul class="list-group mb-3">
+              <li
+                *ngFor="let item of cartitems"
+                class="list-group-item d-flex justify-content-between lh-sm"
+              >
+                <div>
+                  <h6 class="my-0">{{ item.name }}</h6>
+                  <small class="text-muted"
+                    >Quantity: {{ item.quantity }}</small
+                  >
+                </div>
+                <span class="text-muted">{{
+                  item.price | currency: "INR"
+                }}</span>
+              </li>
+
+              <li class="list-group-item d-flex justify-content-between">
+                <span>Total (INR)</span>
+                <strong>{{ totalPrice | currency: "INR" }}</strong>
+              </li>
+            </ul>
+          </div>
+          <div class="col-md-7 col-lg-8">
+            <h4 class="mb-3">Billing address</h4>
+            <div class="container">
+              <form>
+                <div class="form-group mt-3">
+                  <label for="">Name</label>
+                  <input
+                    disabled
+                    placeholder="{{ userdetails.name }}"
+                    name="name"
+                    type="text"
+                    class="form-control"
+                  />
+                </div>
+                <div class="form-group mt-3">
+                  <label for="">Address</label>
+                  <input
+                    disabled
+                    name="address"
+                    type="text"
+                    class="form-control"
+                    placeholder="{{ userdetails.address }}"
+                  />
+                </div>
+
+                <div class="form-group mt-3">
+                  <label for="">City</label>
+                  <input
+                    disabled
+                    placeholder="{{ userdetails.city }}"
+                    name="city"
+                    type="text"
+                    class="form-control"
+                  />
+                </div>
+                <div class="form-group mt-3">
+                  <label for="">Pincode</label>
+                  <input
+                    disabled
+                    placeholder="{{ userdetails.pincode }}"
+                    name="pincode"
+                    type="text"
+                    class="form-control"
+                  />
+                </div>
+                <div class="form-group mt-3">
+                  <label for="">Phone</label>
+                  <input
+                    disabled
+                    placeholder="{{ userdetails.phone }}"
+                    name="phone"
+                    type="text"
+                    class="form-control"
+                  />
+                </div>
+                <div class="form-group mt-3">
+                  <h6>We currently accept only cash on delivery</h6>
+                  <input disabled type="checkbox" name="" checked />Cash On
+                  Delivery
+                  <div>
+                    <button
+                      (click)="placeorder()"
+                      class="btn btn-primary"
+                      data-bs-toggle="modal"
+                      data-bs-target="#exampleModal"
+                    >
+                      Place Order
+                    </button>
+                  </div>
+                </div>
+              </form>
+              <!-- Modal -->
+              <div
+                class="modal fade"
+                id="exampleModal"
+                tabindex="-1"
+                aria-labelledby="exampleModalLabel"
+                aria-hidden="true"
+              >
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLabel">
+                        Order Placed
+                      </h5>
+                      <button
+                        type="button"
+                        class="btn-close"
+                        data-bs-dismiss="modal"
+                        aria-label="Close"
+                      ></button>
+                    </div>
+                    <div class="modal-body">
+                      Order Placed Successfully! Please visit us again.
+                    </div>
+                    <div class="modal-footer">
+                      <button
+                        type="button"
+                        class="btn btn-danger"
+                        data-bs-dismiss="modal"
+                      >
+                        Close
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </body>
+</html>
