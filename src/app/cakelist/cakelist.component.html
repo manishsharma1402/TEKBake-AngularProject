@@ -1,0 +1,7 @@
+<button (click)="ascSort()" class="btn btn-light">low-to-high</button>
+<button (click)="descSort()" class="btn btn-dark">high-to-low</button>
+<div class="container">
+<div class="row">
+     <app-cake *ngFor="let eachcake of cakes" class="col" [cakedata]="eachcake"></app-cake>
+</div>
+</div>
