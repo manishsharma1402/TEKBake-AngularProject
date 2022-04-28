@@ -1,0 +1,63 @@
+<div *ngIf="cake" class="container mt-4">
+    <h1>{{cake.name}}</h1>
+    <section class="cake-details mb-5 pt-4 pb-4">
+    <div  class="col-md-12 row">
+      <div  class="col-md-4 mb-4 mb-md-0">
+        <div  class="mdb-lightbox">
+          <div appHighlight  class="row product-gallery mx-1">
+            <div  class="col-12 mb-0">
+              <div  class="view overlay rounded z-depth-1 main-img">
+                <a href={{cake.image}} data-size="710x823">
+                  <img src={{cake.image}}   class="img-fluid z-depth-1" style="width:100%"/>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <h5>{{cake.name}}</h5>
+        <p class="mb-2 text-muted text-uppercase small">{{cake.reviews}} reviews</p>
+        <p><span class="mr-1"><strong>{{cake.price | currency:"INR"}}</strong></span></p>
+        <p class="pt-1">{{cake.description}}</p>
+        <div class="table-responsive">
+          <table class="table table-sm table-borderless mb-0">
+            <tbody>
+              <tr>
+                <th class="pl-0 w-25" scope="row"><strong>Flavour</strong></th>
+                <td>{{cake.flavour}}</td>
+              </tr>
+              <tr>
+                <th class="pl-0 w-25" scope="row"><strong>Ingredients</strong></th>
+                <td>{{cake.ingredients.join()}}</td>
+              </tr>
+              <tr>
+                <th class="pl-0 w-25" scope="row"><strong>Occasion</strong></th>
+                <td>{{cake.type}}</td>
+              </tr>
+              <tr>
+                <th class="pl-0 w-25" scope="row"><strong>Weight</strong></th>
+                <td>{{cake.weight}} kg</td>
+              </tr>
+              <tr>
+                <th class="pl-0 w-25" scope="row"><strong>Weight</strong></th>
+
+              </tr>
+             
+            </tbody>
+          </table>
+        </div>
+        <hr />
+        
+        <button *ngIf="!isAdding" (click)="addToCart()"  type="button" class="btn btn-light btn-md mr-1 mb-2"><i
+            class="fas fa-shopping-cart pr-2"></i>Add to cart</button>
+        <button *ngIf="isAdding" disabled  type="button" class="btn btn-light btn-md mr-1 mb-2"><i
+              class="fas fa-shopping-cart pr-2"></i>Adding to cart... Please Wait</button>
+        
+      </div>
+      <div class="col-md-4">
+        <img  src="/assets/details.png">
+      </div>
+    </div>
+  
+  </section></div>
